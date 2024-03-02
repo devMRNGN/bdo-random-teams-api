@@ -3,10 +3,13 @@ const ResSuccess = require("../../Utils/Responses/Success");
 
 const User = require("../../Models/User");
 
+const dbController = require("../controller");
+
 async function login({ username, password }){
   try{
-    const user = await User.findOne({ username, password });
+    dbController.dbConnect();
 
+    const user = await User.findOne({ username, password });
     if(!user){
       throw new ResError("not_found", 404);
     }
@@ -24,6 +27,8 @@ async function login({ username, password }){
       status: error.status || 500,
       mensagem: error.message || "error",
     };
+  }finally{
+    dbController.dbDisconnect();
   }
 }
 

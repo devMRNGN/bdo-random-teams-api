@@ -4,8 +4,12 @@ const ResSuccess = require("../../Utils/Responses/Success");
 const Player = require("../../Models/Player");
 const User = require("../../Models/User");
 
+const dbController = require("../controller");
+
 async function getPlayer(username){
   try{
+    dbController.dbConnect();
+    
     const user = await User.findOne({ username });
     if(!user){
       throw new ResError("user_not_found", 404);
@@ -29,6 +33,8 @@ async function getPlayer(username){
       status: error.status || 500,
       mensagem: error.message || "error",
     };
+  }finally{
+    dbController.dbDisconnect();
   }
 }
 

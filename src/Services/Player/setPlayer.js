@@ -3,10 +3,13 @@ const ResSuccess = require("../../Utils/Responses/Success");
 
 const Player = require("../../Models/Player");
 
+const dbController = require("../controller");
+
 async function setPlayer(player){
   try{
-    const playerCreated = await Player.create(player);
+    dbController.dbConnect();
 
+    const playerCreated = await Player.create(player);
     if(!playerCreated){
       throw new ResError("missing_data", 500);
     }
@@ -25,6 +28,8 @@ async function setPlayer(player){
       status: error.status || 500,
       mensagem: error.message || "error",
     };
+  }finally{
+    dbController.dbDisconnect();
   }
 }
 

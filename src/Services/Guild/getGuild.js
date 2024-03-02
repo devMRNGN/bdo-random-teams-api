@@ -3,10 +3,13 @@ const ResSuccess = require("../../Utils/Responses/Success");
 
 const Guild = require("../../Models/Guild");
 
+const dbController = require("../controller");
+
 async function getGuild(name){
   try{
-    const guild = await Guild.findOne({ name });
+    dbController.dbConnect();
 
+    const guild = await Guild.findOne({ name });
     if(!guild){
       throw new ResError("guild_not_found", 404);
     }
@@ -24,6 +27,8 @@ async function getGuild(name){
       status: error.status || 500,
       mensagem: error.message || "error",
     };
+  }finally{
+    dbController.dbDisconnect();
   }
 }
 

@@ -3,10 +3,13 @@ const ResSuccess = require("../../Utils/Responses/Success");
 
 const Guild = require("../../Models/Guild");
 
+const dbController = require("../controller");
+
 async function setGuild(guild){
   try{
-    const guild = await Guild.create(guild);
+    dbController.dbConnect();
 
+    const guild = await Guild.create(guild);
     if(!guild){
       throw new ResError("missing_data", 500);
     }
@@ -24,6 +27,8 @@ async function setGuild(guild){
       status: error.status || 500,
       mensagem: error.message || "error",
     };
+  }finally{
+    dbController.dbDisconnect();
   }
 }
 

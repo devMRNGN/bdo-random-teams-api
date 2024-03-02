@@ -4,8 +4,12 @@ const ResSuccess = require("../../Utils/Responses/Success");
 const Player = require("../../Models/Player");
 const Guild = require("../../Models/Guild");
 
+const dbController = require("../controller");
+
 async function getGuild(family){
   try{
+    dbController.dbConnect();
+
     const player = await Player.findOne({ family });
     if(!player){
       throw new ResError("player_not_found", 404);
@@ -29,6 +33,8 @@ async function getGuild(family){
       status: error.status || 500,
       mensagem: error.message || "error",
     };
+  }finally{
+    dbController.dbDisconnect();
   }
 }
 

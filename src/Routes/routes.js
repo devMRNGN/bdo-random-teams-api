@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const userController = require('../Controllers/userController');
-const tokenController = require('../Controllers/tokenController');
+const tokenController = require('../Middlewares/tokenController');
 const guildController = require('../Controllers/guildController');
 const playerController = require('../Controllers/playerController');
 

@@ -1,3 +1,6 @@
+const Guild = require("../Models/Guild");
+const Player = require("../Models/Player");
+
 const guildController = {};
 
 guildController.setGuild = async (request, response) => {}

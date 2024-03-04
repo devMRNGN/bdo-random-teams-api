@@ -36,15 +36,15 @@ response: <br>
 ### autenticar usuário: http://localhost:8080/auth/login (POST)
 
 payload: <br>
-{
-	"username": "testeJWT",
-	"password": "testeJWT"
+{ <br>
+	"username": "testeJWT", <br>
+	"password": "testeJWT" <br>
 }
 
 response: <br>
-{
-	"message": "success_login",
-	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhIjoxLCJiIjoyLCJjIjozLCJpYXQiOjE3MDk1ODEwNTN9.fM03FHBmQfB00GZZejVdxoCTnNKQ1tYXgFdlxM85CRk"
+{ <br>
+	"message": "success_login", <br>
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhIjoxLCJiIjoyLCJjIjozLCJpYXQiOjE3MDk1ODEwNTN9.fM03FHBmQfB00GZZejVdxoCTnNKQ1tYXgFdlxM85CRk" <br>
 }
 
 ## PLAYER
@@ -52,78 +52,78 @@ response: <br>
 ### criar player: http://localhost:8080/player (POST)
 
 payload: <br>
-{
-	"user": "65e3c7e54a02411922e5d6fe",
-	"family": "JAMALMURRAY",
-	"classe": "Guardian",
-	"level": 63,
-	"gearScore": 680
+{ <br>
+	"user": "65e3c7e54a02411922e5d6fe", <br>
+	"family": "JAMALMURRAY", <br>
+	"classe": "Guardian", <br>
+	"level": 63, <br>
+	"gearScore": 680 <br>
 }
 
 response: <br>
-{
-	"message": "success_player_created",
-	"data": {
-		"playerCreated": {
-			"user": "65e3c7e54a02411922e5d6fe",
-			"family": "JAMALMURRAY",
-			"classe": "Guardian",
-			"level": 63,
-			"gearScore": 680,
-			"guild": [],
-			"_id": "65e4b5397ccd53caef2f1e50",
-			"__v": 0
-		}
-	}
+{ <br>
+	"message": "success_player_created", <br>
+	"data": { <br>
+		"playerCreated": { <br>
+			"user": "65e3c7e54a02411922e5d6fe", <br>
+			"family": "JAMALMURRAY", <br>
+			"classe": "Guardian", <br>
+			"level": 63, <br>
+			"gearScore": 680, <br>
+			"guild": [], <br>
+			"_id": "65e4b5397ccd53caef2f1e50", <br>
+			"__v": 0 <br>
+		} <br>
+	} <br>
 }
 
 ### obter player: http://localhost:8080/player (GET)
 
 payload: <br>
-{
-	"family": "MARANGONI"
+{ <br>
+	"family": "MARANGONI" <br>
 }
 
 response: <br>
-{
-	"message": "success_player_finded",
-	"data": {
-		"player": {
-			"_id": "65e4b0df5f05c5730630f4bb",
-			"user": "65e3c7e54a02411922e5d6fe",
-			"family": "MARANGONI",
-			"classe": "Guardian",
-			"level": 63,
-			"gearScore": 680,
-			"guild": [],
-			"__v": 0
-		}
-	}
+{ <br> 
+	"message": "success_player_finded", <br>
+	"data": { <br>
+		"player": { <br>
+			"_id": "65e4b0df5f05c5730630f4bb", <br>
+			"user": "65e3c7e54a02411922e5d6fe", <br>
+			"family": "MARANGONI", <br>
+			"classe": "Guardian", <br>
+			"level": 63, <br>
+			"gearScore": 680, <br>
+			"guild": [], <br>
+			"__v": 0 <br>
+		} <br>
+	} <br>
 }
 
 ### obter guild do player: http://localhost:8080/player/guild (GET)
 
 payload: <br>
-{
-	"family": "MARANGONI"
+{ <br>
+	"family": "MARANGONI" <br>
 }
 
 response: <br>
-{
-	"message": "success_player_guild_finded",
-	"data": {
-		"guild": {
-			"_id": "65e4b3d760f4a97fba3a62b1",
-			"name": "SuperNova",
-			"image": "URLEXAMPLE",
-			"leader": "65e3c7e54a02411922e5d6fe",
-			"size": "Extra grande",
-			"players": [
-				"65e4b0df5f05c5730630f4bb"
-			],
-			"__v": 0
-		}
-	}
+{ <br>
+	"message": "success_player_guild_finded", <br>
+	"data": { <br>
+		"guild": { <br>
+			"_id": "65e4b3d760f4a97fba3a62b1", <br>
+			"name": "SuperNova", <br>
+			"image": "URLEXAMPLE", <br>
+			"leader": "65e3c7e54a02411922e5d6fe", <br>
+			"size": "Extra grande", <br>
+			"players": [ <br>
+				"65e4b0df5f05c5730630f4bb" <br>
+			], <br>
+			"__v": 0 <br>
+		} <br>
+	} <br>
 }
 
 ## GUILD
@@ -131,81 +131,81 @@ response: <br>
 ### criar guild: http://localhost:8080/guild (POST)
 
 payload: <br>
-{
-	"name": "SuperNova",
-	"image": "URLEXAMPLE",
-	"leader": "65e3c7e54a02411922e5d6fe",
-	"size": "Extra grande",
-	"players": ["65e4b0df5f05c5730630f4bb"]
+{ <br>
+	"name": "SuperNova", <br>
+	"image": "URLEXAMPLE", <br>
+	"leader": "65e3c7e54a02411922e5d6fe", <br>
+	"size": "Extra grande", <br>
+	"players": ["65e4b0df5f05c5730630f4bb"] <br>
 }
 
 response: <br>
-{ 
-	"message": "success_guild_created",
-	"data": {
-		"guildCreated": {
-			"name": "SuperNova",
-			"image": "URLEXAMPLE",
-			"leader": "65e3c7e54a02411922e5d6fe",
-			"size": "Extra grande",
-			"players": [
-				"65e4b0df5f05c5730630f4bb"
-			],
-			"_id": "65e4b3d760f4a97fba3a62b1",
-			"__v": 0
-		}
-	}
+{ <br>
+	"message": "success_guild_created", <br>
+	"data": { <br>
+		"guildCreated": { <br>
+			"name": "SuperNova", <br>
+			"image": "URLEXAMPLE", <br>
+			"leader": "65e3c7e54a02411922e5d6fe", <br>
+			"size": "Extra grande", <br>
+			"players": [ <br>
+				"65e4b0df5f05c5730630f4bb" <br>
+			], <br>
+			"_id": "65e4b3d760f4a97fba3a62b1", <br>
+			"__v": 0 <br>
+		} <br>
+	} <br>
 }
 
 ### obter guild: http://localhost:8080/guild (GET)
 
 payload: <br>
-{
-	"guildName": "SuperNova"
+{ <br>
+	"guildName": "SuperNova" <br>
 }
 
 response: <br>
-{
-	"message": "success_guild_finded",
-	"data": {
-		"guild": {
-			"_id": "65e4b3d760f4a97fba3a62b1",
-			"name": "SuperNova",
-			"image": "URLEXAMPLE",
-			"leader": "65e3c7e54a02411922e5d6fe",
-			"size": "Extra grande",
-			"players": [
-				"65e4b0df5f05c5730630f4bb"
-			],
-			"__v": 0
-		}
-	}
+{ <br>
+	"message": "success_guild_finded", <br>
+	"data": { <br>
+		"guild": { <br>
+			"_id": "65e4b3d760f4a97fba3a62b1", <br>
+			"name": "SuperNova", <br>
+			"image": "URLEXAMPLE", <br>
+			"leader": "65e3c7e54a02411922e5d6fe", <br>
+			"size": "Extra grande", <br>
+			"players": [ <br>
+				"65e4b0df5f05c5730630f4bb" <br>
+			], <br>
+			"__v": 0 <br>
+		} <br>
+	} <br>
 }
 
 ### adicionar player na guild: http://localhost:8080/guild/addplayer (PUT)
 
 payload: <br>
-{
-	"familyPlayerName": "JAMALMURRAY",
-	"guildName": "SuperNova"
+{ <br> 
+	"familyPlayerName": "JAMALMURRAY", <br>
+	"guildName": "SuperNova" <br>
 }
 
 response: <br>
-{
-	"message": "success_player_added",
-	"data": {
-		"guild": {
-			"_id": "65e4b3d760f4a97fba3a62b1",
-			"name": "SuperNova",
-			"image": "URLEXAMPLE",
-			"leader": "65e3c7e54a02411922e5d6fe",
-			"size": "Extra grande",
-			"players": [
-				"65e4b0df5f05c5730630f4bb",
-				"65e4b0df5f05c5730630f4bb",
-				"65e4b5397ccd53caef2f1e50"
-			],
-			"__v": 2
-		}
-	}
+{ <br>
+	"message": "success_player_added", <br>
+	"data": { <br>
+		"guild": { <br>
+			"_id": "65e4b3d760f4a97fba3a62b1", <br>
+			"name": "SuperNova", <br>
+			"image": "URLEXAMPLE", <br>
+			"leader": "65e3c7e54a02411922e5d6fe", <br>
+			"size": "Extra grande", <br>
+			"players": [ <br>
+				"65e4b0df5f05c5730630f4bb", <br>
+				"65e4b0df5f05c5730630f4bb", <br>
+				"65e4b5397ccd53caef2f1e50" <br>
+			], <br>
+			"__v": 2 <br>
+		} <br>
+	} <br>
 }

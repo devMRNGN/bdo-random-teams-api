@@ -1,8 +1,8 @@
 # RODAR API LOCALMENTE
 
-1 - Clonar o projeto: git clone https://github.com/devMRNGN/bdo-random-teams-api.git
-2 - Baixar as dependencias: npm install
-3 - Iniciar a API: node api.js
+1 - Clonar o projeto: git clone https://github.com/devMRNGN/bdo-random-teams-api.git <br>
+2 - Baixar as dependencias: npm install <br>
+3 - Iniciar a API: node api.js <br>
 4 - Utilizar a api, rota padrão: http://localhost:8080/
 
 # ROTAS:

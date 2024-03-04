@@ -7,6 +7,9 @@
 
 # ROTAS:
 
+## Sujestão
+### Para facilitar a leitura dos Jsons de exemplo indico copiar e colar nesse site: https://jsonformatter.curiousconcept.com/#
+
 ## USER
 
 ### registrar usuário: http://localhost:8080/auth/register (POST)

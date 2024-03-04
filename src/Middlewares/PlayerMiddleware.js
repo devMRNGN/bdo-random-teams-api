@@ -4,14 +4,14 @@ const verifySetPlayer = (request, response, next) => {
     try{
         const validReq = {
             necessary: {
-                user: "object_id",
+                user: "user_object_id",
                 family: "string",
             },
             optional: {
                 classe: "string",
                 level: "integer",
                 gearScore: "integer",
-                guild: "object_id",
+                guild: "guild_object_id",
             }
         };
         const costumerReq = request.body;

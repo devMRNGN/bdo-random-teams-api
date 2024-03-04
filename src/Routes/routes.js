@@ -6,6 +6,7 @@ const guildController = require('../Controllers/guildController');
 const playerController = require('../Controllers/playerController');
 
 const { verifyRegister, verifyLogin } = require("../Middlewares/UserMiddleware");
+const { verifySetPlayer, verifyGetPlayer, verifyGetPlayerGuild } = require("../Middlewares/PlayerMiddleware");
 
 // user routes
 router.post('/auth/register', verifyRegister, userController.register);
@@ -17,8 +18,8 @@ router.get('/guild', guildController.getGuild);
 router.put('/guild/addplayer', guildController.addPlayer);
 
 // player routes
-router.post('/player', playerController.setPlayer);
-router.get('/player', playerController.getPlayer);
-router.get('/player/guild', playerController.getGuild);
+router.post('/player', verifySetPlayer, playerController.setPlayer);
+router.get('/player', verifyGetPlayer, playerController.getPlayer);
+router.get('/player/guild', verifyGetPlayerGuild, playerController.getGuild);
 
 module.exports = router;

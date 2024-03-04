@@ -11,14 +11,14 @@
 
 ### registrar usuário: http://localhost:8080/auth/register (POST)
 
-payload: 
+payload:  <br>
 {
 	"username": "testeJWT",
 	"password": "testeJWT",
 	"email": "teste.jwt@gmail.com"
 }
 
-response: 
+response: <br>
 {
 	"message": "success_user_registered",
 	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhIjoxLCJiIjoyLCJjIjozLCJpYXQiOjE3MDk1ODEwMzJ9.e4kjr0XeiP-GN0OaH-f8Vu3YMhFSlrmCDa0XANQEeh4",
@@ -35,13 +35,13 @@ response:
 
 ### autenticar usuário: http://localhost:8080/auth/login (POST)
 
-payload: 
+payload: <br>
 {
 	"username": "testeJWT",
 	"password": "testeJWT"
 }
 
-response: 
+response: <br>
 {
 	"message": "success_login",
 	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhIjoxLCJiIjoyLCJjIjozLCJpYXQiOjE3MDk1ODEwNTN9.fM03FHBmQfB00GZZejVdxoCTnNKQ1tYXgFdlxM85CRk"
@@ -51,7 +51,7 @@ response:
 
 ### criar player: http://localhost:8080/player (POST)
 
-payload: 
+payload: <br>
 {
 	"user": "65e3c7e54a02411922e5d6fe",
 	"family": "JAMALMURRAY",
@@ -60,7 +60,7 @@ payload:
 	"gearScore": 680
 }
 
-response:
+response: <br>
 {
 	"message": "success_player_created",
 	"data": {
@@ -79,12 +79,12 @@ response:
 
 ### obter player: http://localhost:8080/player (GET)
 
-payload:
+payload: <br>
 {
 	"family": "MARANGONI"
 }
 
-response:
+response: <br>
 {
 	"message": "success_player_finded",
 	"data": {
@@ -103,12 +103,12 @@ response:
 
 ### obter guild do player: http://localhost:8080/player/guild (GET)
 
-payload:
+payload: <br>
 {
 	"family": "MARANGONI"
 }
 
-response:
+response: <br>
 {
 	"message": "success_player_guild_finded",
 	"data": {
@@ -130,7 +130,7 @@ response:
 
 ### criar guild: http://localhost:8080/guild (POST)
 
-payload:
+payload: <br>
 {
 	"name": "SuperNova",
 	"image": "URLEXAMPLE",
@@ -139,8 +139,8 @@ payload:
 	"players": ["65e4b0df5f05c5730630f4bb"]
 }
 
-response:
-{
+response: <br>
+{ 
 	"message": "success_guild_created",
 	"data": {
 		"guildCreated": {
@@ -159,12 +159,12 @@ response:
 
 ### obter guild: http://localhost:8080/guild (GET)
 
-payload:
+payload: <br>
 {
 	"guildName": "SuperNova"
 }
 
-response:
+response: <br>
 {
 	"message": "success_guild_finded",
 	"data": {
@@ -184,13 +184,13 @@ response:
 
 ### adicionar player na guild: http://localhost:8080/guild/addplayer (PUT)
 
-payload:
+payload: <br>
 {
 	"familyPlayerName": "JAMALMURRAY",
 	"guildName": "SuperNova"
 }
 
-response:
+response: <br>
 {
 	"message": "success_player_added",
 	"data": {

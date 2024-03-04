@@ -2,14 +2,14 @@ const express = require('express');
 const router = express.Router();
 
 const userController = require('../Controllers/userController');
-const tokenController = require('../Middlewares/tokenController');
 const guildController = require('../Controllers/guildController');
 const playerController = require('../Controllers/playerController');
 
+const { verifyRegister, verifyLogin } = require("../Middlewares/UserMiddleware");
+
 // user routes
-router.post('/auth/register', userController.register);
-router.post('/auth/login', userController.login);
-router.get('/auth/verify-token', tokenController.verifyToken);
+router.post('/auth/register', verifyRegister, userController.register);
+router.post('/auth/login', verifyLogin, userController.login);
 
 // guild routes
 router.post('/guild', guildController.setGuild);

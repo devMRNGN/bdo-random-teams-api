@@ -1,5 +1,4 @@
-const ResError = require("../../Utils/Responses/Error");
-const ResSuccess = require("../../Utils/Responses/Success");
+const Response = require("../../Utils/Response");
 
 const Guild = require("../../Models/Guild");
 
@@ -7,28 +6,26 @@ const dbController = require("../controller");
 
 async function setGuild(guild){
   try{
-    dbController.dbConnect();
+    await dbController.dbConnect();
 
-    const guild = await Guild.create(guild);
-    if(!guild){
-      throw new ResError("missing_data", 500);
+    const guildCreated = await Guild.create(guild);
+    if(!guildCreated){
+      return new Response({ message: "invalid_request" }, 400, true);
     }
 
-    return ResSuccess({
-      payload: {
-        data: { guild },
-        mensagem: "success_guild_created"
+    return new Response(
+      {
+        message: "success_guild_created",
+        data: { guildCreated }
       },
-      status: 201,
-    });
+      201,
+      false
+    );
   }catch(error){
-    return {
-      erro: true,
-      status: error.status || 500,
-      mensagem: error.message || "error",
-    };
+    console.log(error);
+    return new Response({ message: "set_guild_function_error" }, 400, true);
   }finally{
-    dbController.dbDisconnect();
+    await dbController.dbDisconnect();
   }
 }
 

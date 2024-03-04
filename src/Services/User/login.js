@@ -1,34 +1,44 @@
-const ResError = require("../../Utils/Responses/Error");
-const ResSuccess = require("../../Utils/Responses/Success");
+const Response = require("../../Utils/Response");
 
 const User = require("../../Models/User");
 
 const dbController = require("../controller");
 
+const bcryptController = require("../../Utils/bcryptController");
+const tokenController = require("../../Utils/fastJsonWebTokenController");
+
 async function login({ username, password }){
   try{
-    dbController.dbConnect();
+    await dbController.dbConnect();
 
-    const user = await User.findOne({ username, password });
+    const user = await User.findOne({ username }).exec();
     if(!user){
-      throw new ResError("not_found", 404);
+      return new Response({ message: "user_not_found" }, 400, true);
     }
 
-    return ResSuccess({
-      payload: {
-        data: { /* USER TOKEN */ },
-        mensagem: "success_login"
+    const compare = await bcryptController.validatePassword(password, user.password);
+    if(compare.error){
+      return new Response({ message: "validate_password_error" }, 400, true);
+    }
+
+    if(!compare.isValidPassword){
+      return new Response({ message: "invalid_password" }, 400, true);
+    }
+
+    const token = await tokenController.generateToken();
+    return new Response(
+      {
+        message: "success_login",
+        token
       },
-      status: 200,
-    });
+      200,
+      false
+    );
   }catch(error){
-    return {
-      erro: true,
-      status: error.status || 500,
-      mensagem: error.message || "error",
-    };
+    console.log(error);
+    return new Response({ message: "login_function_error" }, 400, true);
   }finally{
-    dbController.dbDisconnect();
+    await dbController.dbDisconnect();
   }
 }
 

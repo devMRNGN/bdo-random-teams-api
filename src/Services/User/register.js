@@ -1,35 +1,42 @@
-const ResError = require("../../Utils/Responses/Error");
-const ResSuccess = require("../../Utils/Responses/Success");
+const Response = require("../../Utils/Response");
 
 const User = require("../../Models/User");
 
 const dbController = require("../controller");
 
+const bcryptController = require("../../Utils/bcryptController");
+const tokenController = require("../../Utils/fastJsonWebTokenController");
+
 async function register(user){
   try{
-    dbController.dbConnect();
+    await dbController.dbConnect();
 
-    // CRIPTOGRAFAR A SENHA DO USUÁRIO ANTES DE SALVAR
-    const createdUser = await User.create(user);
-    if(!createdUser){
-      throw new ResError("register_error", 404);
+    const encrypt = await bcryptController.encrypt(user.password);
+    if(encrypt.error || !encrypt.password){
+      return new Response({ message: "encrypt_password_error"}, 500, true);
     }
 
-    return ResSuccess({
-      payload: {
-        data: { createdUser },
-        mensagem: "success_user_registered"
+    user.password = encrypt.password;
+    const createdUser = await User.create(user);
+    if(!createdUser){
+      return new Response({ message: "invalid_request"}, 500, true);
+    }
+
+    const token = await tokenController.generateToken();
+    return new Response(
+      {
+        message: "success_user_registered",
+        token,
+        data: { createdUser }
       },
-      status: 201,
-    });
+      201,
+      false
+    );
   }catch(error){
-    return {
-      erro: true,
-      status: error.status || 500,
-      mensagem: error.message || "error",
-    };
+    console.log(error);
+    return new Response({ message: "registerer_function_error"}, 500, true);
   }finally{
-    dbController.dbDisconnect();
+    await dbController.dbDisconnect();
   }
 }
 

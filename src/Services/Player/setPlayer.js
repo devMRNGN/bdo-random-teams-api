@@ -1,5 +1,4 @@
-const ResError = require("../../Utils/Responses/Error");
-const ResSuccess = require("../../Utils/Responses/Success");
+const Response = require("../../Utils/Response");
 
 const Player = require("../../Models/Player");
 
@@ -7,29 +6,26 @@ const dbController = require("../controller");
 
 async function setPlayer(player){
   try{
-    dbController.dbConnect();
+    await dbController.dbConnect();
 
     const playerCreated = await Player.create(player);
     if(!playerCreated){
-      throw new ResError("missing_data", 500);
+      return new Response({ message: "invalid_request" }, 400, true);
     }
 
-    return ResSuccess({
-      mensagem: "success",
-      payload: {
-        data: { playerCreated },
-        mensagem: "success_player_created"
+    return new Response(
+      {
+        message: "success_player_created",
+        data: { playerCreated }
       },
-      status: 201,
-    });
+      201,
+      false
+    );
   }catch(error){
-    return {
-      erro: true,
-      status: error.status || 500,
-      mensagem: error.message || "error",
-    };
+    console.log(error);
+    return new Response({ message: "set_player_function_error" }, 400, true);
   }finally{
-    dbController.dbDisconnect();
+    await dbController.dbDisconnect();
   }
 }
 

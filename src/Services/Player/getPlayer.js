@@ -1,40 +1,32 @@
-const ResError = require("../../Utils/Responses/Error");
-const ResSuccess = require("../../Utils/Responses/Success");
+const Response = require("../../Utils/Response");
 
 const Player = require("../../Models/Player");
 const User = require("../../Models/User");
 
 const dbController = require("../controller");
 
-async function getPlayer(username){
+async function getPlayer(family){
   try{
-    dbController.dbConnect();
-    
-    const user = await User.findOne({ username });
-    if(!user){
-      throw new ResError("user_not_found", 404);
-    }
+    await dbController.dbConnect();
 
-    const player = await Player.findOne({ user: user._id });
+    const player = await Player.findOne({ family }).exec();
     if(!player){
-      throw new ResError("player_not_found", 404);
+      return new Response({ message: "player_not_found" }, 400, true);
     }
 
-    return ResSuccess({
-      payload: {
-        data: { player },
-        mensagem: "success_player_finded"
+    return new Response(
+      {
+        message: "success_player_finded",
+        data: { player }
       },
-      status: 200,
-    });
+      200,
+      false
+    );
   }catch(error){
-    return {
-      erro: true,
-      status: error.status || 500,
-      mensagem: error.message || "error",
-    };
+    console.log(error);
+    return new Response({ message: "get_player_function_error" }, 400, true);
   }finally{
-    dbController.dbDisconnect();
+    await dbController.dbDisconnect();
   }
 }
 

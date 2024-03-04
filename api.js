@@ -9,6 +9,6 @@ const routes = require('./src/Routes/routes');
 app.use(express.json());
 app.use('/', routes);
 
-app.listen(port, () => {
+app.listen(port, async () => {
     console.log(`Api is running in url: http://localhost:${port}`);
 });

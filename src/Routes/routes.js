@@ -14,7 +14,7 @@ router.get('/auth/verify-token', tokenController.verifyToken);
 // guild routes
 router.post('/guild', guildController.setGuild);
 router.get('/guild', guildController.getGuild);
-router.put('/guild', guildController.addPlayer);
+router.put('/guild/addplayer', guildController.addPlayer);
 
 // player routes
 router.post('/player', playerController.setPlayer);

@@ -12,26 +12,26 @@
 ### registrar usuário: http://localhost:8080/auth/register (POST)
 
 payload:  <br>
-{
-	"username": "testeJWT",
-	"password": "testeJWT",
-	"email": "teste.jwt@gmail.com"
+{ <br>
+	"username": "testeJWT", <br>
+	"password": "testeJWT", <br>
+	"email": "teste.jwt@gmail.com" <br>
 }
 
 response: <br>
-{
-	"message": "success_user_registered",
-	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhIjoxLCJiIjoyLCJjIjozLCJpYXQiOjE3MDk1ODEwMzJ9.e4kjr0XeiP-GN0OaH-f8Vu3YMhFSlrmCDa0XANQEeh4",
-	"data": {
-		"createdUser": {
-			"username": "testeJWT",
-			"password": "$2b$10$Fp70rSbXr1s3.X3kI1z8keTV2gH7WDzwFRk4nEGMVWwInN2/5.akC",
-			"email": "teste.jwt@gmail.com",
-			"_id": "65e622e83b563c8e2dd21117",
-			"__v": 0
-		}
-	}
-}
+{ <br>
+	"message": "success_user_registered", <br>
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhIjoxLCJiIjoyLCJjIjozLCJpYXQiOjE3MDk1ODEwMzJ9.e4kjr0XeiP-GN0OaH-f8Vu3YMhFSlrmCDa0XANQEeh4", <br>
+	"data": { <br>
+		"createdUser": { <br>
+			"username": "testeJWT", <br>
+			"password": "$2b$10$Fp70rSbXr1s3.X3kI1z8keTV2gH7WDzwFRk4nEGMVWwInN2/5.akC", <br>
+			"email": "teste.jwt@gmail.com", <br>
+			"_id": "65e622e83b563c8e2dd21117", <br>
+			"__v": 0 <br>
+		} <br>
+	} <br>
+} 
 
 ### autenticar usuário: http://localhost:8080/auth/login (POST)
 

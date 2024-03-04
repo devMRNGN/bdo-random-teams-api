@@ -5,7 +5,7 @@ const User = require("../../Models/User");
 const dbController = require("../controller");
 
 const bcryptController = require("../../Utils/bcryptController");
-const tokenController = require("../../Utils/fastJsonWebTokenController");
+const tokenController = require("../../Middlewares/fastJsonWebTokenController");
 
 async function login({ username, password }){
   try{

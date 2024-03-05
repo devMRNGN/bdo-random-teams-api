@@ -11,11 +11,11 @@ const playerSchema = new Schema({
     classe: String,
     level: Number,
     gearScore: Number,
-    guild: [{
+    guild: {
         type: SchemaTypes.ObjectId,
         ref: "Guild",
         required: false,
-    }],
+    },
 });
 
 const Player = db.model("Player", playerSchema);
